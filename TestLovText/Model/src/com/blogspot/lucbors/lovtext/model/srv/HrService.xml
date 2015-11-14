@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE AppModule SYSTEM "jbo_03_01.dtd">
+<!---->
+<AppModule
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="HrService"
+  Version="12.1.3.2.1"
+  InheritPersonalization="merge"
+  ClearCacheOnRollback="true">
+  <ViewUsage
+    Name="DepartmentsView1"
+    ViewObjectName="com.blogspot.lucbors.lovtext.model.vo.DepartmentsView"/>
+  <ViewUsage
+    Name="LocationsView1"
+    ViewObjectName="com.blogspot.lucbors.lovtext.model.vo.LocationsView"/>
+  <ViewUsage
+    Name="DepartmentsView2"
+    ViewObjectName="com.blogspot.lucbors.lovtext.model.vo.DepartmentsView"/>
+  <ViewLinkUsage
+    Name="DeptLocFkLink1"
+    ViewLinkObjectName="com.blogspot.lucbors.lovtext.model.vo.DeptLocFkLink"
+    SrcViewUsageName="com.blogspot.lucbors.lovtext.model.srv.HrService.LocationsView1"
+    DstViewUsageName="com.blogspot.lucbors.lovtext.model.srv.HrService.DepartmentsView2"
+    Reversed="false"/>
+</AppModule>

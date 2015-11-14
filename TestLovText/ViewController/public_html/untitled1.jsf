@@ -1,0 +1,76 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <af:document title="untitled1.jsf" id="d1">
+        <af:messages id="m1"/>
+        <af:form id="f1">
+               <af:serverListener type="inputLovManipulator"
+                           method="#{backingBeanScope.componentBindingBean.changeLovInternals}"/>
+  
+            <af:pageTemplate viewId="/oracle/templates/tabletFirstTemplate.jspx" id="pt1">
+                <f:facet name="header"/>
+                <f:facet name="status"/>
+                <f:facet name="appNav"/>
+                <f:facet name="globalLinks"/>
+                <f:facet name="footer"/>
+                <f:facet name="center">
+                    <af:panelFormLayout id="pfl1">
+                        <af:inputText value="#{bindings.DepartmentId.inputValue}"
+                                      label="#{bindings.DepartmentId.hints.label}"
+                                      required="#{bindings.DepartmentId.hints.mandatory}"
+                                      columns="#{bindings.DepartmentId.hints.displayWidth}"
+                                      maximumLength="#{bindings.DepartmentId.hints.precision}"
+                                      shortDesc="#{bindings.DepartmentId.hints.tooltip}" id="it1">
+                            <f:validator binding="#{bindings.DepartmentId.validator}"/>
+                            <af:convertNumber groupingUsed="false" pattern="#{bindings.DepartmentId.format}"/>
+                        </af:inputText>
+                        <af:inputText value="#{bindings.DepartmentName.inputValue}"
+                                      label="#{bindings.DepartmentName.hints.label}"
+                                      required="#{bindings.DepartmentName.hints.mandatory}"
+                                      columns="#{bindings.DepartmentName.hints.displayWidth}"
+                                      maximumLength="#{bindings.DepartmentName.hints.precision}"
+                                      shortDesc="#{bindings.DepartmentName.hints.tooltip}" id="it2">
+                            <f:validator binding="#{bindings.DepartmentName.validator}"/>
+                        </af:inputText>
+                        <af:inputText value="#{bindings.ManagerId.inputValue}" label="#{bindings.ManagerId.hints.label}"
+                                      required="#{bindings.ManagerId.hints.mandatory}"
+                                      columns="#{bindings.ManagerId.hints.displayWidth}"
+                                      maximumLength="#{bindings.ManagerId.hints.precision}"
+                                      shortDesc="#{bindings.ManagerId.hints.tooltip}" id="it3">
+                            <f:validator binding="#{bindings.ManagerId.validator}"/>
+                            <af:convertNumber groupingUsed="false" pattern="#{bindings.ManagerId.format}"/>
+                        </af:inputText>
+                        <af:inputListOfValues id="locationIdId"
+                                              popupTitle="Search and Select: #{bindings.LocationId.hints.label}"
+                                              value="#{bindings.LocationId.inputValue}"
+                                              label="#{bindings.LocationId.hints.label}"
+                                              model="#{bindings.LocationId.listOfValuesModel}"
+                                              required="#{bindings.LocationId.hints.mandatory}"
+                                              columns="#{bindings.LocationId.hints.displayWidth}"
+                                              shortDesc="#{bindings.LocationId.hints.tooltip}"
+                                              binding="#{backingBeanScope.componentBindingBean.listOfValues}"
+                                              launchPopupListener="#{backingBeanScope.componentBindingBean.onLOVLaunch}">
+                                              <!--  -->
+                            <f:validator binding="#{bindings.LocationId.validator}"/>
+                            <af:convertNumber groupingUsed="false" pattern="#{bindings.LocationId.format}"/>
+                        </af:inputListOfValues>
+                        <f:facet name="footer">
+                            <af:panelGroupLayout layout="horizontal" id="pgl1">
+                                <af:button actionListener="#{bindings.First.execute}" text="First"
+                                           disabled="#{!bindings.First.enabled}" partialSubmit="true" id="b1"/>
+                                <af:button actionListener="#{bindings.Previous.execute}" text="Previous"
+                                           disabled="#{!bindings.Previous.enabled}" partialSubmit="true" id="b2"/>
+                                <af:button actionListener="#{bindings.Next.execute}" text="Next"
+                                           disabled="#{!bindings.Next.enabled}" partialSubmit="true" id="b3"/>
+                                <af:button actionListener="#{bindings.Last.execute}" text="Last"
+                                           disabled="#{!bindings.Last.enabled}" partialSubmit="true" id="b4"/>
+                            </af:panelGroupLayout>
+                        </f:facet>
+                    </af:panelFormLayout>
+                </f:facet>
+                <f:facet name="start"/>
+                <f:facet name="end"/>
+            </af:pageTemplate>
+        </af:form>
+    </af:document>
+</f:view>
